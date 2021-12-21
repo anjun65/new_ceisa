@@ -21,6 +21,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    const ROLES = [
+        'USER' => 'User',
+        'ADMIN' => 'Admin',
+    ];
+
     public function avatarUrl()
     {
         return $this->avatar

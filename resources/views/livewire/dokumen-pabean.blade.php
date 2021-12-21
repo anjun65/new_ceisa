@@ -188,7 +188,7 @@
     </div> --}}
 
     <!-- Delete Transactions Modal -->
-    {{-- <form wire:submit.prevent="deleteSelected">
+    <form wire:submit.prevent="deleteSelected">
         <x-modal.confirmation wire:model.defer="showDeleteModal">
             <x-slot name="title">Hapus Surat Kuasa</x-slot>
 
@@ -202,7 +202,7 @@
                 <x-button.primary type="submit">Hapus</x-button.primary>
             </x-slot>
         </x-modal.confirmation>
-    </form> --}}
+    </form>
 
     <!-- Save Transaction Modal -->
     <form wire:submit.prevent="save">

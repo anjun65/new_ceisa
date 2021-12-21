@@ -1,7 +1,7 @@
 <x-layouts.base>
     <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <img class="mx-auto h-20 w-auto" src="/img/logo_ceisa.svg" alt="Ceisa Logo" />
+            <img class="mx-auto h-20 w-auto" src="/img/logo.png" alt="Ceisa Logo" />
         </div>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
