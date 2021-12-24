@@ -8,6 +8,7 @@ use App\Http\Livewire\SuratKuasa;
 use App\Http\Livewire\izinImpor;
 use App\Http\Livewire\Admin\ManageUser;
 use App\Http\Livewire\DokumenPabean;
+use App\Http\Livewire\CreateDokumenPabean;
 use App\Http\Livewire\Ppftz;
 
 Route::redirect('/', 'dashboard');
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ppftz', Ppftz::class);
 
     Route::get('/dokumen-pabean', DokumenPabean::class);
+    Route::get('/create-dokumen-pabean', CreateDokumenPabean::class);
 
     Route::get('/admin/users', ManageUser::class);
     Route::get('/admin/suratkuasa', ManageUser::class);

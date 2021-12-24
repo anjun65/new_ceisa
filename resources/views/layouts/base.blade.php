@@ -22,5 +22,6 @@
     <script src="https://unpkg.com/moment"></script>
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <script src="https://unpkg.com/trix@1.2.3/dist/trix.js"></script>
+    <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
 </body>
 </html>

@@ -16,17 +16,24 @@ class CreateDokumenPabeansTable extends Migration
         Schema::create('dokumen_pabeans', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nomor_dokumen_pabean');
+            $table->integer('user_id');
             $table->string('kode_dokumen_pabean');
             $table->string('nomor_aju_pabean');
-            $table->string('status');
             $table->string('nomor_pendaftaran');
             $table->string('tanggal_pendaftaran');
             $table->string('jalur');
             $table->string('nama_perusahaan');
             $table->string('kantor_pabean');
-            
 
+            
+            $table->string('entitas');
+            $table->string('jenis_pemberitahuan');
+            $table->string('asal_barang');
+            $table->string('tujuan_barang');
+            $table->string('jenis_dokumen');
+
+            
+            $table->string('status');
             $table->timestamps();
         });
     }

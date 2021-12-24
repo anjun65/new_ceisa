@@ -170,7 +170,7 @@
                     <x-input.text wire:model="editing.email" id="email" placeholder="Email" />
                 </x-input.group>
 
-                <x-input.group for="password" label="Title" :error="$errors->first('editing.password')">
+                <x-input.group for="password" label="Password" :error="$errors->first('editing.password')">
                     <x-input.text wire:model="editing.password" type="password" id="Password" placeholder="Password" />
                 </x-input.group>
 
