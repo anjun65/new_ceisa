@@ -4,12 +4,13 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use Auth;
+
+use Illuminate\Support\Facades\Hash;
+use Password;
 
 class ManageUser extends Component
 {
@@ -29,7 +30,7 @@ class ManageUser extends Component
 
     public function rules() { return [
         'editing.email' => 'required',
-        'editing.password' => 'required'|'min:8',
+        'editing.password' => 'required|min:8|',
         'editing.roles' => 'required',
         // 'editing.status' => 'required|in:'.collect(Kuasa::STATUSES)->keys()->implode(','),
     ]; }
@@ -88,6 +89,14 @@ class ManageUser extends Component
     public function save()
     {
         $this->validate();
+        
+        // $test = $validatedData->editing->password;
+
+        // foreach ($validatedData->editing as $editing)
+        // {
+        //     dd($editing->password);
+        // }
+    
 
         $this->editing->save();
 

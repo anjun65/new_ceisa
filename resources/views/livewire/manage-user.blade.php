@@ -171,11 +171,12 @@
                 </x-input.group>
 
                 <x-input.group for="password" label="Password" :error="$errors->first('editing.password')">
-                    <x-input.text wire:model="editing.password" type="password" id="Password" placeholder="Password" />
+                    <x-input.text wire:model.lazy="editing.password" type="password" id="Password" placeholder="Password" />
                 </x-input.group>
 
                 <x-input.group for="roles" label="Roles" :error="$errors->first('editing.roles')">
                     <x-input.select wire:model="editing.roles" id="roles">
+                        <option value="">Tidak Memilih</option>
                         @foreach (App\Models\User::ROLES as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach

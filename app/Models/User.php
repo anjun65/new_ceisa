@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Storage;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -14,7 +15,7 @@ class User extends Authenticatable
     protected $guarded = [];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     protected $casts = [
@@ -32,4 +33,10 @@ class User extends Authenticatable
             ? Storage::disk('avatars')->url($this->avatar)
             : 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email)));
     }
+
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->password = Hash::make($value); 
+    // }
+    
 }
