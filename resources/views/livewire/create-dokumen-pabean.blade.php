@@ -111,13 +111,13 @@
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Baran"/>
                                 </div>
                             </div>
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -127,13 +127,65 @@
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+                                </div>
+                            </div>
+
+
+                            <div class="bg-white rounded shadow hover:shadow-md duration-4">
+                                <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b p-6">
+                                    <p>Pengirim<p>
+                                    <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
+                                </div>
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Negara</label>
+                                    
+                                    <x-input.select wire:model="" id="negara">
+                                        <option value="" selected>Belum Memilih</option>
+                                        @foreach (App\Models\Country::get() as $country)
+                                            <option value="{{ $country->id }}">{{ $country->code }} - {{ $country->name }}</option>
+                                        @endforeach
+                                    </x-input.select>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded shadow hover:shadow-md duration-4">
+                                <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b p-6">
+                                    <p>Penjual<p>
+                                    <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
+                                </div>
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Negara</label>
+                                    <x-input.select wire:model="" id="negara">
+                                        <option value="" selected>Belum Memilih</option>
+                                        @foreach (App\Models\Country::get() as $country)
+                                            <option value="{{ $country->id }}">{{ $country->code }} - {{ $country->name }}</option>
+                                        @endforeach
+                                    </x-input.select>
                                 </div>
                             </div>
                         </div>                        
@@ -142,8 +194,55 @@
                 <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="dokumen" role="tabpanel" aria-labelledby="dokumen-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">Dokumen</p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="pengangkut" role="tabpanel" aria-labelledby="pengangkut-tab">
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Pengangkut</p>
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800" id="pengangkut" role="tabpanel" aria-labelledby="pengangkut-tab">
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-white rounded shadow hover:shadow-md duration-4">
+                                <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b p-6">
+                                    <p>BC 1.1<p>
+                                    <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
+                                </div>
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Tutup PU</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Kode Pos" />
+                                    <x-input.date wire:model="editing.nomor_aju_pabean" id="filter-status"/>
+                                </div>
+
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Pos</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pos" />
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded shadow hover:shadow-md duration-4">
+                                <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b p-6">
+                                    <p>Kantor Pabean<p>
+                                    <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
+                                </div>
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Pelabuhan Tujuan</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Kantor Pabean</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded shadow hover:shadow-md duration-4">
+                                <div class="flex flex-row justify-between uppercase font-bold text-blue-dark border-b p-6">
+                                    <p>Keterangan Lain<p>
+                                    <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
+                                </div>
+                                <div class="p-6 text-grey-darker text-justify flex flex-col">
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Jenis PIB</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Jenis Impor</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Cara Bayar</label>
+                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                </div>
+                            </div>
+                        </div>                        
+                    </p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="kemasan" role="tabpanel" aria-labelledby="kemasan-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">Kemasan</p>
