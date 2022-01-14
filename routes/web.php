@@ -11,6 +11,13 @@ use App\Http\Livewire\DokumenPabean;
 use App\Http\Livewire\CreateDokumenPabean;
 use App\Http\Livewire\Ppftz;
 
+use App\Http\Livewire\Admin\Config;
+
+use App\Http\Livewire\Admin\Config\Country as ConfigCountry;
+use App\Http\Livewire\Admin\Config\Valuta as ConfigValuta;
+use App\Http\Livewire\Admin\Config\DocumentCode as ConfigDocumentCode;
+use App\Http\Livewire\Admin\Config\CaraPengangkutan as ConfigCaraPengangkutan;
+
 Route::redirect('/', 'dashboard');
 
 /**
@@ -35,6 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-dokumen-pabean', CreateDokumenPabean::class);
 
     Route::get('/admin/users', ManageUser::class);
+
+    Route::get('/admin/config', Config::class);
+    Route::get('/admin/config/country', ConfigCountry::class)->name('country-config');
+    Route::get('/admin/config/valuta', ConfigValuta::class)->name('valuta-config');
+    Route::get('/admin/config/document-code', ConfigDocumentCode::class)->name('document-code-config');
+    Route::get('/admin/config/cara-pengangkutan', ConfigCaraPengangkutan::class)->name('cara-pengangkutan-config');
+
+
     Route::get('/admin/suratkuasa', ManageUser::class);
 });
 

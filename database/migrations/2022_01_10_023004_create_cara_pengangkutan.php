@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCounttriesTable extends Migration
+class CreateCaraPengangkutan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCounttriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('cara_pengangkutans', function (Blueprint $table) {
             $table->id();
-			$table->string('code');
-			$table->string('name');
+            $table->string("cara");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCounttriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('cara_pengangkutans');
     }
 }
