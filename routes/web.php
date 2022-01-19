@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ppftz', Ppftz::class);
 
     Route::get('/dokumen-pabean', DokumenPabean::class);
-    Route::get('/create-dokumen-pabean', CreateDokumenPabean::class);
+    Route::get('/create-dokumen-pabean/{nomor_aju_pabean}', CreateDokumenPabean::class)->name('edit-dokumen-pabean');
 
     Route::get('/admin/users', ManageUser::class);
 

@@ -15,7 +15,7 @@ class DokumenPabean extends Model
         'user_id',
 
         'entitas',
-        'jenis_pemberitahun',
+        'jenis_pemberitahuan',
         'asal_barang',
         'tujuan_barang',
         

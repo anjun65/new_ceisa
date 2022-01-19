@@ -111,6 +111,6 @@ class CaraPengangkutan extends Component
     {
         return view('livewire.admin.config.cara-pengangkutan', [
             'items' => $this->rows,
-        ]);
+        ])->layout('layouts.admin');
     }
 }

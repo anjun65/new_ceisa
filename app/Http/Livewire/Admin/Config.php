@@ -8,6 +8,6 @@ class Config extends Component
 {
     public function render()
     {
-        return view('livewire.admin.config');
+        return view('livewire.admin.config')->layout('layouts.admin');;
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
+use Illuminate\Support\Facades\Auth;
 
 class DokumenPabean extends Component
 {
@@ -31,19 +32,10 @@ class DokumenPabean extends Component
 
     public function rules() { return [
         'editing.entitas' => 'required',
-        'editing.jenis_pemberitahun' => 'required',
+        'editing.jenis_pemberitahuan' => 'required',
         'editing.asal_barang' => 'required',
         'editing.tujuan_barang' => 'required',
-
-        'editing.nomor_dokumen_pabean' => 'required',
         'editing.kode_dokumen_pabean' => 'required',
-        'editing.nomor_aju_pabean' => 'required',
-        'editing.nomor_pendaftaran' => 'required',
-
-        'editing.tanggal_pendaftaran' => 'required|min:3',
-        'editing.jalur' => 'required',
-        'editing.nama_perusahaan' => 'required',
-        'editing.kantor_pabean' => 'required',
     ]; }
 
     public function mount() { $this->editing = $this->makeBlankTransaction(); }
@@ -101,9 +93,17 @@ class DokumenPabean extends Component
     {
         $this->validate();
 
+        $no_aju = random_int(100000, 999999);
+
+        $this->editing->fill([
+            'user_id' => Auth::id(),
+            'nomor_aju_pabean' => $no_aju,
+            'status' => 'Draft',
+        ]);
+
         $this->editing->save();
 
-        $this->showEditModal = false;
+        return redirect()->route('edit-dokumen-pabean', $no_aju);
     }
 
     public function resetFilters() { $this->reset('filters'); }

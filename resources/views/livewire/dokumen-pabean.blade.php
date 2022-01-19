@@ -172,8 +172,8 @@
                     </x-input.select>
                 </x-input.group>
 
-                <x-input.group for="jenis_pemberitahun" label="Jenis Pemberitahuan" :error="$errors->first('editing.jenis_pemberitahun')">
-                    <x-input.select wire:model="editing.jenis_pemberitahun" id="jenis_pemberitahun">
+                <x-input.group for="jenis_pemberitahuan" label="Jenis Pemberitahuan" :error="$errors->first('editing.jenis_pemberitahuan')">
+                    <x-input.select wire:model="editing.jenis_pemberitahuan" id="jenis_pemberitahuan">
                         <option value="" selected>Belum Memilih</option>
                         @foreach (App\Models\DokumenPabean::PEMBERITAHUAN as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>

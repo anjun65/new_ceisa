@@ -115,6 +115,6 @@ class Valuta extends Component
     {
         return view('livewire.admin.config.valuta', [
             'items' => $this->rows,
-        ]);
+        ])->layout('layouts.admin');
     }
 }

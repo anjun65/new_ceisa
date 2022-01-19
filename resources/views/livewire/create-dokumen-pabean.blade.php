@@ -6,10 +6,10 @@
             <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
                 <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="header-tab" data-tabs-target="#header" type="button" role="tab" aria-controls="header" aria-selected="true">Header</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="header-tab" data-tabs-target="#header" type="button" role="tab" aria-controls="header" aria-selected="true">Header</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="entitas-tab" data-tabs-target="#entitas" type="button" role="tab" aria-controls="entitas" aria-selected="false">Entitas</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="entitas-tab" data-tabs-target="#entitas" type="button" role="tab" aria-controls="entitas" aria-selected="false">Entitas</button>
                     </li>
                     <li class="mr-2" role="presentation">
                         <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="dokumen-tab" data-tabs-target="#dokumen" type="button" role="tab" aria-controls="dokumen" aria-selected="false">Dokumen</button>
@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div id="myTabContent">
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800" id="header" role="tabpanel" aria-labelledby="header-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'header') hidden @endif" id="header" role="tabpanel" aria-labelledby="header-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
                         <div class="grid grid-cols-3 gap-3">
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -41,8 +41,8 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Pengajuan</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="nomor_aju_pabean" class="block text-sm font-medium text-gray-700 mb-4">Nomor Pengajuan</label>
+                                    <x-input.text wire:model="dokumenpabean.nomor_aju_pabean" readonly id="nomor_aju_pabean" placeholder="Nomor Pengajuan" />
                                 </div>
                             </div>
 
@@ -52,11 +52,11 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Pelabuhan Tujuan</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="pelabuhan_tujuan" class="block text-sm font-medium text-gray-700 mb-4">Pelabuhan Tujuan</label>
+                                    <x-input.text wire:model="header.pelabuhan_tujuan" id="pelabuhan_tujuan" placeholder="Pelabuhan Tujuan" />
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Kantor Pabean</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <label for="kantor_pabean" class="block text-sm font-medium text-gray-700 my-4">Kantor Pabean</label>
+                                    <x-input.text wire:model="header.kantor_pabean" id="kantor_pabean" placeholder="Kantor Pebean"/>
                                 </div>
                             </div>
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -65,18 +65,21 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Jenis PIB</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Jenis Impor</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Cara Bayar</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="jenis_pib" class="block text-sm font-medium text-gray-700 mb-4">Jenis PIB</label>
+                                    <x-input.text wire:model="header.jenis_pib" id="jenis_pib" placeholder="Jenis PIB" />
+                                    <label for="jenis_impor" class="block text-sm font-medium text-gray-700 my-4">Jenis Impor</label>
+                                    <x-input.text wire:model="header.jenis_impor" id="jenis_impor" placeholder="Jenis Impor" />
+                                    <label for="cara_bayar" class="block text-sm font-medium text-gray-700 my-4">Cara Bayar</label>
+                                    <x-input.text wire:model="header.cara_bayar" id="cara_bayar" placeholder="Cara Bayar" />
                                 </div>
+                            </div>
+                            <div class="col-span-3 mt-5 text-right">
+                                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Selanjutnya</button>
                             </div>
                         </div>                        
                     </p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="entitas" role="tabpanel" aria-labelledby="entitas-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'entitas') hidden @endif" id="entitas" role="tabpanel" aria-labelledby="entitas-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
                         <div class="grid grid-cols-3 gap-3">
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -85,21 +88,30 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan" />
+                                    <label for="npwp_importir" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
+                                    <x-input.text wire:model="entitas.npwp_importir" id="npwp_importir" placeholder="Nomor Identitas" />
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <label for="nama_importir" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
+                                    <x-input.text wire:model="entitas.nama_importir" id="nama_importir" placeholder="Nama"/>
 
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <label for="alamat_importir" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
+                                    <x-input.text wire:model="entitas.alamat_importir" id="alamat_importir" placeholder="Alamat"/>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">API/NIB</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                    <label for="NIB" class="block text-sm font-medium text-gray-700 my-4">API/NIB</label>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <x-input.select wire:model="entitas.negara_pengirim" id="negara">
+                                            <option value="" selected>Belum Memilih</option>
+                                            <option value="API P">API P</option>
+                                            <option value="API U">API U</option>
+                                        </x-input.select>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Status</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Pengajuan"/>
+                                        <x-input.text wire:model="entitas.NIB" id="NIB" placeholder="API/NIB"/>
+                                    </div>
+                                    
+
+                                    <label for="status" class="block text-sm font-medium text-gray-700 my-4">Status</label>
+                                    <x-input.text wire:model="entitas.status" id="status" placeholder="Status"/>
                                 </div>
                             </div>
 
@@ -109,14 +121,14 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
+                                    <label for="npwp_pemilik" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
+                                    <x-input.text wire:model="entitas.npwp_pemilik" id="npwp_pemilik" placeholder="Nomor Identitas" />
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+                                    <label for="nama_pemilik" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
+                                    <x-input.text wire:model="entitas.nama_pemilik" id="nama_pemilik" placeholder="Nama Pemilik Barang"/>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Baran"/>
+                                    <label for="alamat_pemilik" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
+                                    <x-input.text wire:model="entitas.alamat_pemilik" id="alamat_pemilik" placeholder="Alamat Pemilik Barang"/>
                                 </div>
                             </div>
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -125,14 +137,14 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
+                                    <label for="npwp_terpusat" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
+                                    <x-input.text wire:model="entitas.npwp_terpusat" id="npwp_terpusat" placeholder="Nomor Identitas" />
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+                                    <label for="nama_terpusat" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
+                                    <x-input.text wire:model="entitas.nama_terpusat" id="nama_terpusat" placeholder="Nama"/>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+                                    <label for="alamat_terpusat" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
+                                    <x-input.text wire:model="entitas.alamat_terpusat" id="alamat_terpusat" placeholder="Alamat"/>
                                 </div>
                             </div>
 
@@ -143,18 +155,16 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+                                    <x-input.text wire:model="entitas.nama_pengirim" id="nama_penjual" placeholder="Nama Pengirim"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+                                    <x-input.text wire:model="entitas.alamat_pengirim" id="title" placeholder="Alamat Pengirim"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Negara</label>
                                     
-                                    <x-input.select wire:model="" id="negara">
+                                    <x-input.select wire:model="entitas.negara_pengirim" id="negara">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\Country::get() as $country)
                                             <option value="{{ $country->id }}">{{ $country->code }} - {{ $country->name }}</option>
@@ -169,17 +179,14 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Identitas</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nomor Identitas" />
-
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nama Pemilik Barang"/>
+                                    <x-input.text wire:model="entitas.nomor_aju_pabean" id="title" placeholder="Nama Penjual"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Alamat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Alamat Pemilik Barang"/>
+                                    <x-input.text wire:model="entitas.nomor_aju_pabean" id="title" placeholder="Alamat Penjual"/>
 
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Negara</label>
-                                    <x-input.select wire:model="" id="negara">
+                                    <x-input.select wire:model="entitas.negara_penjual" id="negara">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\Country::get() as $country)
                                             <option value="{{ $country->id }}">{{ $country->code }} - {{ $country->name }}</option>
@@ -187,10 +194,14 @@
                                     </x-input.select>
                                 </div>
                             </div>
+
+                            <div class="col-span-3 mt-5 text-right">
+                                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Selanjutnya</button>
+                            </div>
                         </div>                        
                     </p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="dokumen" role="tabpanel" aria-labelledby="dokumen-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'dokumen') hidden @endif" id="dokumen" role="tabpanel" aria-labelledby="dokumen-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
                         <h1 class="text-2xl font-semibold text-gray-900">Dokumen Lampiran</h1>
 
@@ -331,7 +342,7 @@
                 </div>
 
 
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800" id="pengangkutan" role="tabpanel" aria-labelledby="pengangkut-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'pengangkut') hidden @endif" id="pengangkut" role="tabpanel" aria-labelledby="pengangkut-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
                         <div class="grid grid-cols-3 gap-3">
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -406,13 +417,17 @@
                                     <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Pelabuhan Tujuan"/>
                                 </div>
                             </div>
+
+                            <div class="col-span-3 mt-5 text-right">
+                                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Selanjutnya</button>
+                            </div>
                         </div>                        
                     </p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="kemasan" role="tabpanel" aria-labelledby="kemasan-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'kemasan') hidden @endif" id="kemasan" role="tabpanel" aria-labelledby="kemasan-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">Kemasan</p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="transaksi" role="tabpanel" aria-labelledby="transaksi-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'transaksi') hidden @endif" id="transaksi" role="tabpanel" aria-labelledby="transaksi-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
                         <div class="grid grid-cols-3 gap-3">
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -495,12 +510,15 @@
                                 </div>
                             </div>
                         </div> 
+                        <div class="col-span-3 mt-5 text-right">
+                                <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Selanjutnya</button>
+                            </div>
                     </p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="barang" role="tabpanel" aria-labelledby="barang-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'barang') hidden @endif" id="barang" role="tabpanel" aria-labelledby="barang-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">Barang</p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 hidden" id="pungut" role="tabpanel" aria-labelledby="pungut-tab">
+                <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'pungut') hidden @endif" id="pungut" role="tabpanel" aria-labelledby="pungut-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">Pungut</p>
                 </div>
             </div>

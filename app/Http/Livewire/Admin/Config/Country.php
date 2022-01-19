@@ -115,6 +115,6 @@ class Country extends Component
     {
         return view('livewire.admin.config.country', [
             'items' => $this->rows,
-        ]);
+        ])->layout('layouts.admin');
     }
 }

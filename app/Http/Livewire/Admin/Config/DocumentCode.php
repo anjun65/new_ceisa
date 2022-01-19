@@ -16,6 +16,7 @@ class DocumentCode extends Component
     public $showDeleteModal = false;
     public $showEditModal = false;
     public $showFilters = false;
+
     public $filters = [
         'code' => '',
         'name' => '',
@@ -112,6 +113,6 @@ class DocumentCode extends Component
     {
         return view('livewire.admin.config.document-code', [
             'items' => $this->rows,
-        ]);
+        ])->layout('layouts.admin');
     }
 }
