@@ -6,28 +6,28 @@
             <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
                 <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="header-tab" data-tabs-target="#header" type="button" role="tab" aria-controls="header" aria-selected="true">Header</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'header')" id="header-tab" data-tabs-target="#header" type="button" role="tab" aria-controls="header" aria-selected="true">Header</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="entitas-tab" data-tabs-target="#entitas" type="button" role="tab" aria-controls="entitas" aria-selected="false">Entitas</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'entitas')" id="entitas-tab" data-tabs-target="#entitas" type="button" role="tab" aria-controls="entitas" aria-selected="false">Entitas</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="dokumen-tab" data-tabs-target="#dokumen" type="button" role="tab" aria-controls="dokumen" aria-selected="false">Dokumen</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'dokumen')" id="dokumen-tab" data-tabs-target="#dokumen" type="button" role="tab" aria-controls="dokumen" aria-selected="false">Dokumen</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="pengangkut-tab" data-tabs-target="#pengangkut" type="button" role="tab" aria-controls="pengangkut" aria-selected="false">Pengangkut</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'pengangkut')" id="pengangkut-tab" data-tabs-target="#pengangkut" type="button" role="tab" aria-controls="pengangkut" aria-selected="false">Pengangkut</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="kemasan-tab" data-tabs-target="#kemasan" type="button" role="tab" aria-controls="kemasan" aria-selected="false">Kemasan & Peti Kemas</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'kemasan')" id="kemasan-tab" data-tabs-target="#kemasan" type="button" role="tab" aria-controls="kemasan" aria-selected="false">Kemasan & Peti Kemas</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="transaksi-tab" data-tabs-target="#transaksi" type="button" role="tab" aria-controls="transaksi" aria-selected="false">Transaksi</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'transaksi')" id="transaksi-tab" data-tabs-target="#transaksi" type="button" role="tab" aria-controls="transaksi" aria-selected="false">Transaksi</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="barang-tab" data-tabs-target="#barang" type="button" role="tab" aria-controls="barang" aria-selected="false">Barang</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'barang')" id="barang-tab" data-tabs-target="#barang" type="button" role="tab" aria-controls="barang" aria-selected="false">Barang</button>
                     </li>
                     <li class="mr-2" role="presentation">
-                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="pungut-tab" data-tabs-target="#pungut" type="button" role="tab" aria-controls="pungut" aria-selected="false">Pungut</button>
+                        <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" wire:click="$set('getCurrentPage', 'pungut')" id="pungut-tab" data-tabs-target="#pungut" type="button" role="tab" aria-controls="pungut" aria-selected="false">Pungut</button>
                     </li>
                 </ul>
             </div>
@@ -351,20 +351,20 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Tutup PU</label>
+                                    <label for="kode_tutup_pu" class="block text-sm font-medium text-gray-700 mb-4">Nomor Tutup PU</label>
                                     <div class="grid grid-cols-3 gap-3">
-                                        <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Kode Pos"/>
-                                        <x-input.text wire:model="editing.nomor" id="nomor" placeholder="Nomor"/>
-                                        <x-input.date wire:model="editing.nomor_aju_pabean" id="date"/>
+                                        <x-input.text wire:model="pengangkut.kode_tutup_pu" id="kode_tutup_pu" placeholder="Kode Pos"/>
+                                        <x-input.text wire:model="pengangkut.nomor_tutup_pu" id="nomor_tutup_pu" placeholder="Nomor"/>
+                                        <x-input.date wire:model="pengangkut.tanggal_tutup_pu" id="tanggal_tutup_pu"/>
                                     </div>
                                 </div>
 
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Nomor Pos</label>
+                                    <label for="nomor_pos_1" class="block text-sm font-medium text-gray-700 mb-4">Nomor Pos</label>
                                     <div class="grid grid-cols-3 gap-3">
-                                        <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Kode Pos"/>
-                                        <x-input.text wire:model="editing.subpo" id="nomor" placeholder="Subpos"/>
-                                        <x-input.date wire:model="editing.nomor_aju_pabean" id="date"/>
+                                        <x-input.text wire:model="pengangkut.nomor_pos_1" id="nomor_pos_1" placeholder="Kode Pos"/>
+                                        <x-input.text wire:model="pengangkut.nomor_pos_2" id="nomor_pos_2" placeholder="Subpos"/>
+                                        <x-input.date wire:model="pengangkut.nomor_pos_3" id="nomor_pos_3" />
                                     </div>
                                 </div>
                             </div>
@@ -375,9 +375,9 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Cara Pengangkutan</label>
+                                    <label for="cara_pengangkutan" class="block text-sm font-medium text-gray-700 mb-4">Cara Pengangkutan</label>
 
-                                    <x-input.select wire:model="" id="negara">
+                                    <x-input.select wire:model="pengangkut.cara_pengangkutan" id="cara_pengangkutan">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\CaraPengangkutan::get() as $item)
                                             <option value="{{ $item->id }}">{{ $item->id }} - {{ $item->cara }}</option>
@@ -385,22 +385,22 @@
                                     </x-input.select>
 
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nama Sarana Angkut</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder=""/>
+                                    <label for="sarana_angkut" class="block text-sm font-medium text-gray-700 my-4">Nama Sarana Angkut</label>
+                                    <x-input.text wire:model="pengangkut.sarana_angkut" id="sarana_angkut" placeholder=""/>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nomor Voy/Flight</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder=""/>
+                                    <label for="nomor_voy_flight" class="block text-sm font-medium text-gray-700 my-4">Nomor Voy/Flight</label>
+                                    <x-input.text wire:model="pengangkut.nomor_voy_flight" id="nomor_voy_flight" placeholder=""/>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Bendera</label>
-                                    <x-input.select wire:model="" id="negara">
+                                    <label for="bendera" class="block text-sm font-medium text-gray-700 my-4">Bendera</label>
+                                    <x-input.select wire:model="pengangkut.bendera" id="bendera">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\Country::get() as $country)
                                             <option value="{{ $country->id }}">{{ $country->code }} - {{ $country->name }}</option>
                                         @endforeach
                                     </x-input.select>
 
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Perkiraan Tanggal Tiba</label>
-                                    <x-input.date wire:model="editing.nomor_aju_pabean" id="date"/>
+                                    <label for="tanggal_perkiraan" class="block text-sm font-medium text-gray-700 my-4">Perkiraan Tanggal Tiba</label>
+                                    <x-input.date wire:model="pengangkut.tanggal_perkiraan" id="tanggal_perkiraan"/>
                                 </div>
                             </div>
                             <div class="bg-white rounded shadow hover:shadow-md duration-4">
@@ -409,12 +409,12 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Pelabuhan Muat</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Pelabuhan Muat"/>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Pelabuhan Transit</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Pelabuhan Transit"/>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Pelabuhan Tujuan</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Pelabuhan Tujuan"/>
+                                    <label for="pelabuhan_muat" class="block text-sm font-medium text-gray-700 mb-4">Pelabuhan Muat</label>
+                                    <x-input.text wire:model="pengangkut.pelabuhan_muat" id="pelabuhan_muat" placeholder="Pelabuhan Muat"/>
+                                    <label for="pelabuhan_transit" class="block text-sm font-medium text-gray-700 my-4">Pelabuhan Transit</label>
+                                    <x-input.text wire:model="pengangkut.pelabuhan_transit" id="pelabuhan_transit" placeholder="Pelabuhan Transit"/>
+                                    <label for="tempat_penimbunan" class="block text-sm font-medium text-gray-700 my-4">Tempat Penimbunan</label>
+                                    <x-input.text wire:model="pengangkut.tempat_penimbunan" id="tempat_penimbunan" placeholder="Tempat Penimbunan"/>
                                 </div>
                             </div>
 
@@ -436,37 +436,37 @@
                                     <div class="cursor-pointer text-grey-dark hover:text-blue duration-4"><i class="fas fa-ellipsis-v"></i></div>
                                 </div>
                                 <div class="p-6 text-grey-darker text-justify flex flex-col">
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-4">Valuta</label>
-                                    <x-input.select wire:model="" id="valuta">
+                                    <label for="valuta" class="block text-sm font-medium text-gray-700 mb-4">Valuta</label>
+                                    <x-input.select wire:model="transaksi.valuta" id="valuta">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\ListValuta::get() as $item)
                                             <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->name }}</option>
                                         @endforeach
                                     </x-input.select>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">NDPBM</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Kode Pos"/>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Jenis Transaksi</label>
-                                    <x-input.select wire:model="" id="jenis_transaksi">
+                                    <label for="ndpbm" class="block text-sm font-medium text-gray-700 my-4">NDPBM</label>
+                                    <x-input.text wire:model="transaksi.ndpbm" id="ndpbm" placeholder="Kode Pos"/>
+                                    <label for="jenis_transaksi" class="block text-sm font-medium text-gray-700 my-4">Jenis Transaksi</label>
+                                    <x-input.select wire:model="transaksi.jenis_transaksi" id="jenis_transaksi">
                                         <option value="" selected>Belum Memilih</option>
                                         @foreach (App\Models\JenisTransaksi::get() as $item)
                                             <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->name }}</option>
                                         @endforeach
                                     </x-input.select>
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Harga Barang</label>
+                                    <label for="harga_barang" class="block text-sm font-medium text-gray-700 my-4">Harga Barang</label>
 
                                     <div class="grid grid-cols-2 gap-2">
-                                        <x-input.select wire:model="" id="valuta">
+                                        <x-input.select wire:model="transaksi.kode_barang" id="kode_barang">
                                             <option value="" selected>Belum Memilih</option>
                                             @foreach (App\Models\ListKodeHarga::get() as $item)
                                                 <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->name }}</option>
                                             @endforeach
                                         </x-input.select>
-                                        <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Harga"/>
+                                        <x-input.text wire:model="transaksi.harga_barang" id="harga_barang" placeholder="Harga"/>
                                     </div>
 
                                     
-                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Nilai Pabean</label>
-                                    <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder="Nilai Pabean"/>
+                                    <label for="nilai_pabean" class="block text-sm font-medium text-gray-700 my-4">Nilai Pabean</label>
+                                    <x-input.text wire:model="transaksi.nilai_pabean" id="nilai_pabean" placeholder="Nilai Pabean"/>
                                     
                                 </div>
                             </div>
@@ -486,8 +486,8 @@
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Freight</label>
                                     <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder=""/>
 
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Asuransi</label>
                                     <div class="grid grid-cols-2 gap-2">
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700 my-4">Asuransi</label>
                                         <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder=""/>
                                         <x-input.text wire:model="editing.nomor_aju_pabean" id="title" placeholder=""/>
                                     </div>

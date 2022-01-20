@@ -122,6 +122,22 @@ class CreateDokumenPabean extends Component
         'pengangkut.pelabuhan_transit' => 'required',
         'pengangkut.tempat_penimbunan' => 'required',
 
+        'transaksi.valuta' => 'required',
+        'transaksi.ndpbm' => 'required',
+
+        'transaksi.jenis_transaksi' => 'required',
+        'transaksi.kode_barang' => 'required',
+        'transaksi.harga_barang' => 'required',
+        'transaksi.nilai_pabean' => 'required',
+
+            
+        'transaksi.biaya_penambah' => 'required',
+        'transaksi.biaya_pengurang' => 'required',
+        'transaksi.voluntary_declaration' => 'required',
+
+            
+        'transaksi.berat_kotor' => 'required',
+        'transaksi.berat_bersih' => 'required',
 
 
     ]; }
@@ -137,7 +153,7 @@ class CreateDokumenPabean extends Component
         $this->entitas = EntitasDokumenPabean::make();
         // $this->dokumenpabean = DokumenPabean::make();
         // $this->dokumenlain = DokumenLain::make();
-        // $this->pengangkut = PengangkutDokumenPabean::make();
+        $this->pengangkut = PengangkutDokumenPabean::make();
         // $this->kemasan = KemasanDokumenPabean::make();
         // $this->petikemas = PetiKemasDokumenPabean::make();
         // $this->transaksi = TransaksiDokumenPabean::make();
