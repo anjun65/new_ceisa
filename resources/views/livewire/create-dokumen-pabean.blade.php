@@ -203,13 +203,13 @@
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'dokumen') hidden @endif" id="dokumen" role="tabpanel" aria-labelledby="dokumen-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
-                        <h1 class="text-2xl font-semibold text-gray-900">Dokumen Lampiran</h1>
+                        <h1 class="text-lg font-semibold text-gray-900">Dokumen Lampiran</h1>
 
-                        {{-- <div class="py-4 space-y-4">
+                        <div class="py-4 space-y-4">
                             <!-- Top Bar -->
                             <div class="flex justify-between">
                                 <div class="w-2/4 flex space-x-4">
-                                    <x-input.text wire:model="filters.cara" placeholder="Cari Cara Pengangkutan..." />
+                                    <x-input.text wire:model="filters.seri" placeholder="Cari Dokumen Lampiran..." />
                                 </div>
 
                                 <div class="space-x-2 flex items-center">
@@ -245,9 +245,12 @@
                                         <x-table.heading class="pr-0 w-8">
                                             <x-input.checkbox wire:model="selectPage" />
                                         </x-table.heading>
-                                        <x-table.heading sortable multi-column wire:click="sortBy('cara')" :direction="$sorts['cara'] ?? null">Nama Cara Pengangkutan</x-table.heading>
-                                        
-                                        
+
+                                        <x-table.heading sortable multi-column wire:click="sortBy('seri')" :direction="$sorts['seri'] ?? null">Seri</x-table.heading>
+                                        <x-table.heading sortable multi-column wire:click="sortBy('jenis_dokumen')" :direction="$sorts['jenis_dokumen'] ?? null">Jenis</x-table.heading>
+                                        <x-table.heading sortable multi-column wire:click="sortBy('nomor_dokumen')" :direction="$sorts['nomor_dokumen'] ?? null">Nomor</x-table.heading>
+                                        <x-table.heading sortable multi-column wire:click="sortBy('tanggal_dokumen')" :direction="$sorts['tanggal_dokumen'] ?? null">Tanggal</x-table.heading>
+
                                         <x-table.heading />
                                     </x-slot>
 
@@ -257,30 +260,40 @@
                                             <x-table.cell colspan="8">
                                                 @unless ($selectAll)
                                                 <div>
-                                                    <span>Anda telah memilih <strong>{{ $items->count() }}</strong> data list Cara Pengangkutan, Apakah anda mau pilih semua data <strong>{{ $items->total() }}</strong>?</span>
+                                                    <span>Anda telah memilih <strong>{{ $dokumens->count() }}</strong> list Dokumen Lampiran, Apakah anda mau pilih semua data <strong>{{ $dokumens->total() }}</strong>?</span>
                                                     <x-button.link wire:click="selectAll" class="ml-1 text-blue-600">Select All</x-button.link>
                                                 </div>
                                                 @else
-                                                <span>Anda telah memilih <strong>{{ $items->total() }}</strong> data.</span>
+                                                <span>Anda telah memilih <strong>{{ $dokumens->total() }}</strong> data.</span>
                                                 @endif
                                             </x-table.cell>
                                         </x-table.row>
                                         @endif
 
-                                        @forelse ($items as $item)
-                                        <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $item->id }}">
+                                        @forelse ($dokumens as $dokumen)
+                                        <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $dokumen->id }}">
                                             <x-table.cell class="pr-0">
-                                                <x-input.checkbox wire:model="selected" value="{{ $item->id }}" />
-                                            </x-table.cell>
-
-
-
-                                            <x-table.cell>
-                                                <span class="text-cool-gray-900 font-medium">{{ $item->cara }} </span>
+                                                <x-input.checkbox wire:model="selected" value="{{ $dokumen->id }}" />
                                             </x-table.cell>
 
                                             <x-table.cell>
-                                                <x-button.link wire:click="edit({{ $item->id }})">Edit</x-button.link>
+                                                <span class="text-cool-gray-900 font-medium">{{ $dokumen->seri }} </span>
+                                            </x-table.cell>
+
+                                            <x-table.cell>
+                                                <span class="text-cool-gray-900 font-medium">{{ $dokumen->jenis_dokumen }} </span>
+                                            </x-table.cell>
+
+                                            <x-table.cell>
+                                                <span class="text-cool-gray-900 font-medium">{{ $dokumen->nomor_dokumen }} </span>
+                                            </x-table.cell>
+
+                                            <x-table.cell>
+                                                <span class="text-cool-gray-900 font-medium">{{ $dokumen->tanggal_dokumen }} </span>
+                                            </x-table.cell>
+
+                                            <x-table.cell>
+                                                <x-button.link wire:click="edit({{ $dokumen->id }})">Edit</x-button.link>
                                             </x-table.cell>
                                         </x-table.row>
                                         @empty
@@ -288,7 +301,7 @@
                                             <x-table.cell colspan="8">
                                                 <div class="flex justify-center items-center space-x-2">
                                                     <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
-                                                    <span class="font-medium py-8 text-cool-gray-400 text-xl">Tidak ada list Cara Pengangkutan yang ditemukan...</span>
+                                                    <span class="font-medium py-8 text-cool-gray-400 text-xl">Tidak ada list Dokumen Lampiran yang ditemukan...</span>
                                                 </div>
                                             </x-table.cell>
                                         </x-table.row>
@@ -297,15 +310,15 @@
                                 </x-table>
 
                                 <div>
-                                    {{ $items->links() }}
+                                    {{ $dokumens->links() }}
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                         <!-- Delete Transactions Modal -->
-                        {{-- <form wire:submit.prevent="deleteSelected">
+                        <form wire:submit.prevent="deleteSelected">
                             <x-modal.confirmation wire:model.defer="showDeleteModal">
-                                <x-slot name="title">Hapus List Cara Pengangkutan</x-slot>
+                                <x-slot name="title">Hapus List Dokumen Lampiran</x-slot>
 
                                 <x-slot name="content">
                                     <div class="py-8 text-cool-gray-700">Apakah anda yakin? Data yang telah dihapus tidak dapat dikembalikan.</div>
@@ -317,16 +330,33 @@
                                     <x-button.primary type="submit">Hapus</x-button.primary>
                                 </x-slot>
                             </x-modal.confirmation>
-                        </form> --}}
+                        </form>
 
                         <!-- Save Transaction Modal -->
-                        {{-- <form wire:submit.prevent="save">
+                        <form wire:submit.prevent="save">
                             <x-modal.dialog wire:model.defer="showEditModal">
-                                <x-slot name="title">Edit List Cara Pengangkutan</x-slot>
+                                <x-slot name="title">Edit List Dokumen Lampiran</x-slot>
 
                                 <x-slot name="content">
-                                    <x-input.group for="name" label="Nama Cara Pengangkutan" :error="$errors->first('editing.name')">
-                                        <x-input.text wire:model="editing.name" id="title" placeholder="Nama Cara Pengangkutan" />
+                                    <x-input.group for="seri" label="Seri" :error="$errors->first('dokumenlain.seri')">
+                                        <x-input.text wire:model="dokumenlain.seri" id="seri" placeholder="Seri" />
+                                    </x-input.group>
+
+                                    <x-input.group for="jenis_dokumen" label="Jenis Dokumen" :error="$errors->first('dokumenlain.jenis_dokumen')">
+
+                                        <x-input.select wire:model="dokumenlain.jenis_dokumen" id="jenis_dokumen-status">
+                                            <option value="">Pilih Jenis Dokumen...</option>
+                                            <option value="03001 - Izin Prinsip Pendirian Kawasan Berikat">03001 - Izin Prinsip Pendirian Kawasan Berikat</option>
+                                            <option value="380- INVOICE">380- INVOICE</option>
+                                        </x-input.select>
+                                    </x-input.group>
+
+                                    <x-input.group for="nomor_dokumen" label="Nomor Dokumen" :error="$errors->first('dokumenlain.nomor_dokumen')">
+                                        <x-input.text wire:model="dokumenlain.nomor_dokumen" id="nomor_dokumen" placeholder="Nomor Dokumen" />
+                                    </x-input.group>
+                                    
+                                    <x-input.group for="tanggal_dokumen" label="Tanggal Dokumen" :error="$errors->first('dokumenlain.tanggal_dokumen')">
+                                        <x-input.date wire:model="dokumenlain.tanggal_dokumen" id="tanggal_dokumen" placeholder="Tanggal Dokumen" />
                                     </x-input.group>
 
                                 </x-slot>
@@ -337,7 +367,7 @@
                                     <x-button.primary type="submit">Save</x-button.primary>
                                 </x-slot>
                             </x-modal.dialog>
-                        </form> --}}
+                        </form>
                     </p>
                 </div>
 
@@ -425,7 +455,291 @@
                     </p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'kemasan') hidden @endif" id="kemasan" role="tabpanel" aria-labelledby="kemasan-tab">
-                    <p class="text-gray-500 dark:text-gray-400 text-sm">Kemasan</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="wrap">
+                                <h1 class="text-lg font-semibold text-gray-900">Kemasan</h1>
+
+                                <div class="py-4 space-y-4">
+                                    <!-- Top Bar -->
+                                    <div class="flex justify-between">
+                                        <div class="w-2/4 flex space-x-4">
+                                            <x-input.text wire:model="filters.seri" placeholder="Cari Kemasan..." />
+                                        </div>
+
+                                        <div class="space-x-2 flex items-center">
+                                            <x-input.group borderless paddingless for="perPage" label="Halaman">
+                                                <x-input.select wire:model="perPage" id="perPage">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                </x-input.select>
+                                            </x-input.group>
+
+                                            <x-dropdown label="Aksi">
+                                                <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
+                                                    <x-icon.download class="text-cool-gray-400"/> <span>Ekspor</span>
+                                                </x-dropdown.item>
+
+                                                <x-dropdown.item type="button" wire:click="$toggle('showDeleteModal')" class="flex items-center space-x-2">
+                                                    <x-icon.trash class="text-cool-gray-400"/> <span>Hapus</span>
+                                                </x-dropdown.item>
+                                            </x-dropdown>
+
+                                            <livewire:import-transactions />
+
+                                            <x-button.primary wire:click="create"><x-icon.plus/> Baru</x-button.primary>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Transactions Table -->
+                                    <div class="flex-col space-y-4">
+                                        <x-table>
+                                            <x-slot name="head">
+                                                <x-table.heading class="pr-0 w-8">
+                                                    <x-input.checkbox wire:model="selectPage" />
+                                                </x-table.heading>
+
+                                                <x-table.heading sortable multi-column wire:click="sortBy('seri')" :direction="$sorts['seri'] ?? null">Seri</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('jenis_dokumen')" :direction="$sorts['jenis_dokumen'] ?? null">Jenis</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('nomor_dokumen')" :direction="$sorts['nomor_dokumen'] ?? null">Nomor</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('tanggal_dokumen')" :direction="$sorts['tanggal_dokumen'] ?? null">Tanggal</x-table.heading>
+
+                                                <x-table.heading />
+                                            </x-slot>
+
+                                            <x-slot name="body">
+                                                @if ($selectPage)
+                                                <x-table.row class="bg-cool-gray-200" wire:key="row-message">
+                                                    <x-table.cell colspan="8">
+                                                        @unless ($selectAll)
+                                                        <div>
+                                                            <span>Anda telah memilih <strong>{{ $dokumens->count() }}</strong> list Dokumen Lampiran, Apakah anda mau pilih semua data <strong>{{ $dokumens->total() }}</strong>?</span>
+                                                            <x-button.link wire:click="selectAll" class="ml-1 text-blue-600">Select All</x-button.link>
+                                                        </div>
+                                                        @else
+                                                        <span>Anda telah memilih <strong>{{ $dokumens->total() }}</strong> data.</span>
+                                                        @endif
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @endif
+
+                                                @forelse ($dokumens as $dokumen)
+                                                <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $dokumen->id }}">
+                                                    <x-table.cell class="pr-0">
+                                                        <x-input.checkbox wire:model="selected" value="{{ $dokumen->id }}" />
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->seri }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->jenis_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->nomor_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->tanggal_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <x-button.link wire:click="edit({{ $dokumen->id }})">Edit</x-button.link>
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @empty
+                                                <x-table.row>
+                                                    <x-table.cell colspan="8">
+                                                        <div class="flex justify-center items-center space-x-2">
+                                                            <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
+                                                            <span class="font-medium py-8 text-cool-gray-400 text-xl">Tidak ada list Kemasan yang ditemukan...</span>
+                                                        </div>
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @endforelse
+                                            </x-slot>
+                                        </x-table>
+
+                                        <div>
+                                            {{ $dokumens->links() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap">
+                                <h1 class="text-lg font-semibold text-gray-900">Peti Kemas</h1>
+
+                                <div class="py-4 space-y-4">
+                                    <!-- Top Bar -->
+                                    <div class="flex justify-between">
+                                        <div class="w-2/4 flex space-x-4">
+                                            <x-input.text wire:model="filters.seri" placeholder="Cari Peti Kemas..." />
+                                        </div>
+
+                                        <div class="space-x-2 flex items-center">
+                                            <x-input.group borderless paddingless for="perPage" label="Halaman">
+                                                <x-input.select wire:model="perPage" id="perPage">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                </x-input.select>
+                                            </x-input.group>
+
+                                            <x-dropdown label="Aksi">
+                                                <x-dropdown.item type="button" wire:click="exportSelected" class="flex items-center space-x-2">
+                                                    <x-icon.download class="text-cool-gray-400"/> <span>Ekspor</span>
+                                                </x-dropdown.item>
+
+                                                <x-dropdown.item type="button" wire:click="$toggle('showDeleteModal')" class="flex items-center space-x-2">
+                                                    <x-icon.trash class="text-cool-gray-400"/> <span>Hapus</span>
+                                                </x-dropdown.item>
+                                            </x-dropdown>
+
+                                            <livewire:import-transactions />
+
+                                            <x-button.primary wire:click="create"><x-icon.plus/> Baru</x-button.primary>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Transactions Table -->
+                                    <div class="flex-col space-y-4">
+                                        <x-table>
+                                            <x-slot name="head">
+                                                <x-table.heading class="pr-0 w-8">
+                                                    <x-input.checkbox wire:model="selectPage" />
+                                                </x-table.heading>
+
+                                                <x-table.heading sortable multi-column wire:click="sortBy('seri')" :direction="$sorts['seri'] ?? null">Seri</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('jenis_dokumen')" :direction="$sorts['jenis_dokumen'] ?? null">Jenis</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('nomor_dokumen')" :direction="$sorts['nomor_dokumen'] ?? null">Nomor</x-table.heading>
+                                                <x-table.heading sortable multi-column wire:click="sortBy('tanggal_dokumen')" :direction="$sorts['tanggal_dokumen'] ?? null">Tanggal</x-table.heading>
+
+                                                <x-table.heading />
+                                            </x-slot>
+
+                                            <x-slot name="body">
+                                                @if ($selectPage)
+                                                <x-table.row class="bg-cool-gray-200" wire:key="row-message">
+                                                    <x-table.cell colspan="8">
+                                                        @unless ($selectAll)
+                                                        <div>
+                                                            <span>Anda telah memilih <strong>{{ $dokumens->count() }}</strong> list Dokumen Lampiran, Apakah anda mau pilih semua data <strong>{{ $dokumens->total() }}</strong>?</span>
+                                                            <x-button.link wire:click="selectAll" class="ml-1 text-blue-600">Select All</x-button.link>
+                                                        </div>
+                                                        @else
+                                                        <span>Anda telah memilih <strong>{{ $dokumens->total() }}</strong> data.</span>
+                                                        @endif
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @endif
+
+                                                @forelse ($dokumens as $dokumen)
+                                                <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{ $dokumen->id }}">
+                                                    <x-table.cell class="pr-0">
+                                                        <x-input.checkbox wire:model="selected" value="{{ $dokumen->id }}" />
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->seri }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->jenis_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->nomor_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <span class="text-cool-gray-900 font-medium">{{ $dokumen->tanggal_dokumen }} </span>
+                                                    </x-table.cell>
+
+                                                    <x-table.cell>
+                                                        <x-button.link wire:click="edit({{ $dokumen->id }})">Edit</x-button.link>
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @empty
+                                                <x-table.row>
+                                                    <x-table.cell colspan="8">
+                                                        <div class="flex justify-center items-center space-x-2">
+                                                            <x-icon.inbox class="h-8 w-8 text-cool-gray-400" />
+                                                            <span class="font-medium py-8 text-cool-gray-400 text-xl">Tidak ada list Peti Kemas yang ditemukan...</span>
+                                                        </div>
+                                                    </x-table.cell>
+                                                </x-table.row>
+                                                @endforelse
+                                            </x-slot>
+                                        </x-table>
+
+                                        <div>
+                                            {{ $dokumens->links() }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Delete Transactions Modal -->
+                                {{-- <form wire:submit.prevent="deleteSelected">
+                                    <x-modal.confirmation wire:model.defer="showDeleteModal">
+                                        <x-slot name="title">Hapus List Dokumen Lampiran</x-slot>
+
+                                        <x-slot name="content">
+                                            <div class="py-8 text-cool-gray-700">Apakah anda yakin? Data yang telah dihapus tidak dapat dikembalikan.</div>
+                                        </x-slot>
+
+                                        <x-slot name="footer">
+                                            <x-button.secondary wire:click="$set('showDeleteModal', false)">Batal</x-button.secondary>
+
+                                            <x-button.primary type="submit">Hapus</x-button.primary>
+                                        </x-slot>
+                                    </x-modal.confirmation>
+                                </form> --}}
+
+                                <!-- Save Transaction Modal -->
+                                {{-- <form wire:submit.prevent="save">
+                                    <x-modal.dialog wire:model.defer="showEditModal">
+                                        <x-slot name="title">Edit List Dokumen Lampiran</x-slot>
+
+                                        <x-slot name="content">
+                                            <x-input.group for="seri" label="Seri" :error="$errors->first('dokumenlain.seri')">
+                                                <x-input.text wire:model="dokumenlain.seri" id="seri" placeholder="Seri" />
+                                            </x-input.group>
+
+                                            <x-input.group for="jenis_dokumen" label="Jenis Dokumen" :error="$errors->first('dokumenlain.jenis_dokumen')">
+
+                                                <x-input.select wire:model="dokumenlain.jenis_dokumen" id="jenis_dokumen-status">
+                                                    <option value="">Pilih Jenis Dokumen...</option>
+                                                    <option value="03001 - Izin Prinsip Pendirian Kawasan Berikat">03001 - Izin Prinsip Pendirian Kawasan Berikat</option>
+                                                    <option value="380- INVOICE">380- INVOICE</option>
+                                                </x-input.select>
+                                            </x-input.group>
+
+                                            <x-input.group for="nomor_dokumen" label="Nomor Dokumen" :error="$errors->first('dokumenlain.nomor_dokumen')">
+                                                <x-input.text wire:model="dokumenlain.nomor_dokumen" id="nomor_dokumen" placeholder="Nomor Dokumen" />
+                                            </x-input.group>
+                                            
+                                            <x-input.group for="tanggal_dokumen" label="Tanggal Dokumen" :error="$errors->first('dokumenlain.tanggal_dokumen')">
+                                                <x-input.date wire:model="dokumenlain.tanggal_dokumen" id="tanggal_dokumen" placeholder="Tanggal Dokumen" />
+                                            </x-input.group>
+
+                                        </x-slot>
+
+                                        <x-slot name="footer">
+                                            <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
+
+                                            <x-button.primary type="submit">Save</x-button.primary>
+                                        </x-slot>
+                                    </x-modal.dialog>
+                                </form> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </p>
                 </div>
                 <div class="bg-gray-50 p-4 rounded-lg dark:bg-gray-800 @if ($getCurrentPage != 'transaksi') hidden @endif" id="transaksi" role="tabpanel" aria-labelledby="transaksi-tab">
                     <p class="text-gray-500 dark:text-gray-400 text-sm">
@@ -444,7 +758,7 @@
                                         @endforeach
                                     </x-input.select>
                                     <label for="ndpbm" class="block text-sm font-medium text-gray-700 my-4">NDPBM</label>
-                                    <x-input.text wire:model="transaksi.ndpbm" id="ndpbm" placeholder="Kode Pos"/>
+                                    <x-input.text wire:model="transaksi.ndpbm" id="ndpbm" placeholder="NDPBM"/>
                                     <label for="jenis_transaksi" class="block text-sm font-medium text-gray-700 my-4">Jenis Transaksi</label>
                                     <x-input.select wire:model="transaksi.jenis_transaksi" id="jenis_transaksi">
                                         <option value="" selected>Belum Memilih</option>

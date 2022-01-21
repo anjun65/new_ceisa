@@ -30,7 +30,7 @@ class CreateDokumenPabean extends Component
     public $showEditModal = false;
     public $showFilters = false;
 
-    
+    public $nomor_aju_pabean = '';
 
     public $getCurrentPage = 'header';
     
@@ -146,13 +146,14 @@ class CreateDokumenPabean extends Component
 
         $item = DokumenPabean::where('nomor_aju_pabean', $nomor_aju_pabean)->first();
         
+        $this->nomor_aju_pabean = $nomor_aju_pabean;
 
 
         $this->dokumenpabean = $item; 
         $this->header = HeaderDokumenPabean::make();
         $this->entitas = EntitasDokumenPabean::make();
         // $this->dokumenpabean = DokumenPabean::make();
-        // $this->dokumenlain = DokumenLain::make();
+        $this->dokumenlain = DokumenLain::make();
         $this->pengangkut = PengangkutDokumenPabean::make();
         // $this->kemasan = KemasanDokumenPabean::make();
         // $this->petikemas = PetiKemasDokumenPabean::make();
@@ -194,38 +195,48 @@ class CreateDokumenPabean extends Component
         $this->showFilters = ! $this->showFilters;
     }
 
-    // public function create()
-    // {
-    //     $this->useCachedRows();
+    public function create()
+    {
+        $this->useCachedRows();
 
-    //     if ($this->editing->getKey()) $this->editing = $this->makeBlankTransaction();
+        if ($this->dokumenlain->getKey()) $this->dokumenlain = DokumenLain::make();
 
-    //     $this->showEditModal = true;
-    // }
+        $this->showEditModal = true;
+    }
 
-    // public function edit(DokumenPabean $transaction)
-    // {
-    //     $this->useCachedRows();
+    public function edit(DokumenLain $dokumen)
+    {
+        $this->useCachedRows();
 
-    //     if ($this->editing->isNot($transaction)) $this->editing = $transaction;
+        if ($this->dokumenlain->isNot($dokumen)) $this->dokumenlain = $dokumen;
 
-    //     $this->showEditModal = true;
-    // }
+        $this->showEditModal = true;
+    }
 
     public function save()
     {
-        $this->validate();
+        // dd($this->validate());
+        // $this->validate();
 
-        $this->editing->save();
+        
+        $this->dokumenlain->fill([
+            'nomor_pengajuan_dokumen' => '822638',
+        ]);
+        
+        
 
-        // $this->showEditModal = false;
+        $this->dokumenlain->save();
+        
+        
+
+        $this->showEditModal = false;
     }
 
     public function resetFilters() { $this->reset('filters'); }
 
     public function getRowsQueryProperty()
     {
-        $query = DokumenPabean::query()
+        $query = DokumenLain::query()
             ->when($this->filters['cara'], fn($query, $cara) => $query->where('cara', 'like', '%'.$cara.'%'));
 
         return $this->applySorting($query);
@@ -241,7 +252,7 @@ class CreateDokumenPabean extends Component
     public function render()
     {
         return view('livewire.create-dokumen-pabean', [
-            'dokumen' => $this->rows,
+            'dokumens' => $this->rows,
         ]);
     }
 }
