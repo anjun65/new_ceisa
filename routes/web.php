@@ -17,6 +17,7 @@ use App\Http\Livewire\Admin\Config\Country as ConfigCountry;
 use App\Http\Livewire\Admin\Config\Valuta as ConfigValuta;
 use App\Http\Livewire\Admin\Config\DocumentCode as ConfigDocumentCode;
 use App\Http\Livewire\Admin\Config\CaraPengangkutan as ConfigCaraPengangkutan;
+use App\Http\Livewire\Admin\SuratKuasa as SuratKuasaAdmin;
 
 Route::redirect('/', 'dashboard');
 
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/config/cara-pengangkutan', ConfigCaraPengangkutan::class)->name('cara-pengangkutan-config');
 
 
-    Route::get('/admin/suratkuasa', ManageUser::class);
+    Route::get('/admin/suratkuasa', SuratKuasaAdmin::class);
 });
 
 // Route::prefix('admin')

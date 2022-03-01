@@ -83,8 +83,6 @@
                     </x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('nomor_kuasa')" :direction="$sorts['nomor_kuasa'] ?? null">NO dan Tanggal Izin Impor</x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('pemberi_kuasa')" :direction="$sorts['pemberi_kuasa'] ?? null">Perusahaan</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('nomor_ijin_bpk')" :direction="$sorts['nomor_ijin_bpk'] ?? null">Alamat Perusahaan</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('penerima_kuasa')" :direction="$sorts['penerima_kuasa'] ?? null">NO dan Tanggal Izin BPK</x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('awal_berlaku')" :direction="$sorts['awal_berlaku'] ?? null">MASA BERLAKU</x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('status')" :direction="$sorts['status'] ?? null">Status</x-table.heading>
                     
@@ -207,40 +205,70 @@
     <!-- Save Transaction Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Edit Surat Kuasa</x-slot>
+            <x-slot name="title">Izin Impor</x-slot>
 
             <x-slot name="content">
-                <x-input.group for="nomor_kuasa" label="Nomor Surat Kuasa" :error="$errors->first('editing.nomor_kuasa')">
-                    <x-input.text wire:model="editing.nomor_kuasa" id="title" placeholder="Nomor Surat Kuasa" />
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                    Data Pemberi Kuasa
+                </h3>
+
+                <x-input.group for="npwp_perusahaan" label="NPWP Perusahaan" :error="$errors->first('editing.npwp_perusahaan')">
+                    <x-input.text wire:model="editing.npwp_perusahaan" id="npwp_perusahaan" placeholder="NPWP Perusahaan" />
                 </x-input.group>
 
-                <x-input.group for="tanggal_kuasa" label="Tanggal Surat Kuasa" :error="$errors->first('editing.tanggal_kuasa')">
-                    <x-input.date wire:model="editing.tanggal_kuasa" id="tanggal_kuasa" />
+                <x-input.group for="perusahaan" label="Nama Perusahaan" :borderless="true" :error="$errors->first('editing.perusahaan')">
+                    <x-input.text wire:model="editing.perusahaan" id="perusahaan" placeholder="Nama Perusahaan" />
                 </x-input.group>
 
-                <x-input.group for="pemberi_kuasa" label="Pemberi Kuasa" :error="$errors->first('editing.pemberi_kuasa')">
-                    <x-input.text wire:model="editing.pemberi_kuasa" id="title" placeholder="Pemberi Kuasa" />
+                <x-input.group for="alamat_perusahaan" label="Alamat Perusahaan" :borderless="true" :error="$errors->first('editing.alamat_perusahaan')">
+                    <x-input.text wire:model="editing.alamat_perusahaan" id="alamat_perusahaan" placeholder="Alamat Perusahaan" />
                 </x-input.group>
 
-                <x-input.group for="nomor_ijin_bpk" label="Nomor Ijin BPK" :error="$errors->first('editing.nomor_ijin_bpk')">
-                    <x-input.text wire:model="editing.nomor_ijin_bpk" id="title" placeholder="Nomor Ijin BPK" />
+                <x-input.group for="nomor_izin_bpk" label="Nomor Ijin BPK" :borderless="true" :error="$errors->first('editing.nomor_izin_bpk')">
+                    <x-input.text wire:model="editing.nomor_izin_bpk" id="nomor_izin_bpk" placeholder="Nomor Ijin BPK" />
                 </x-input.group>
 
-                <x-input.group for="tanggal_ijin_bpk" label="Tanggal Ijin BPK" :error="$errors->first('editing.tanggal_ijin_bpk')">
-                    <x-input.date wire:model="editing.tanggal_ijin_bpk" id="tanggal_ijin_bpk" />
+                <x-input.group for="tanggal_izin" label="Tanggal Ijin BPK" :borderless="true" :error="$errors->first('editing.tanggal_izin')">
+                    <x-input.date wire:model="editing.tanggal_izin" id="tanggal_ijin_bpk" />
                 </x-input.group>
 
-                <x-input.group for="penerima_kuasa" label="Penerima Kuasa" :error="$errors->first('editing.penerima_kuasa')">
-                    <x-input.text wire:model="editing.penerima_kuasa" id="title" placeholder="Penerima Kuasa" />
+                <h3 class="text-xl pt-2 font-medium text-gray-900 dark:text-white">
+                    Data Izin Pemasukan Barang BP Kawasan
+                </h3>
+
+                <x-input.group for="nomor_surat" label="Nomor Surat" :error="$errors->first('editing.nomor_surat')">
+                    <x-input.text wire:model="editing.nomor_surat" id="nomor_surat" placeholder="Nomor Surat" />
                 </x-input.group>
 
-                <x-input.group for="awal_berlaku" label="Awal Berlaku" :error="$errors->first('editing.awal_berlaku')">
-                    <x-input.date wire:model="editing.awal_berlaku" id="awal_berlaku" />
+                <x-input.group for="tanggal_surat" label="Tanggal Surat" :borderless="true" :error="$errors->first('editing.tanggal_izin')">
+                    <x-input.date wire:model="editing.tanggal_surat" id="tanggal_ijin_bpk" />
                 </x-input.group>
 
-                <x-input.group for="akhir_berlaku" label="Akhir Berlaku" :error="$errors->first('editing.akhir_berlaku')">
+                <x-input.group for="kantor_bc_ftz" label="Kantor BC FTZ" :error="$errors->first('editing.kantor_bc_ftz')">
+                    <x-input.select wire:model="editing.kantor_bc_ftz" id="kantor_bc_ftz">
+                            <option value="" disabled selected>Pilih Kantor BC</option>
+                            <option value="DIREKTORAT IKC">DIREKTORAT IKC</option>
+                            <option value="KPPBC TMP B TANJUNG BALAI KARIMUN">KPPBC TMP B TANJUNG BALAI KARIMUN</option>
+                            <option value="KPU BEA DAN CUKAI TIPE B BATAM">KPU BEA DAN CUKAI TIPE B BATAM</option>
+                            <option value="KPPBC TMP B TANJUNG PINANG">KPPBC TMP B TANJUNG PINANG</option>
+                            <option value="KPPBC TMP C SABANG">KPPBC TMP C SABANG</option>
+                    </x-input.select>
+                </x-input.group>
+
+                <x-input.group for="upload_dokumen" label="Upload Dokumen" :borderless="true" :error="$errors->first('editing.upload_dokumen')">
+                    <x-input.file-upload wire:model="editing.upload_dokumen" id="upload_dokumen">
+                    </x-input.file-upload>
+                </x-input.group>
+
+                <x-input.group for="awal_berlaku" label="Tanggal Awal" :borderless="true" :error="$errors->first('editing.awal_berlaku')">
+                    <x-input.date wire:model="editing.awal_berlaku" id="tanggal_awal" />
+                </x-input.group>
+
+                <x-input.group for="akhir_berlaku" label="Tanggal Akhir" :borderless="true" :error="$errors->first('editing.akhir_berlaku')">
                     <x-input.date wire:model="editing.akhir_berlaku" id="akhir_berlaku" />
                 </x-input.group>
+
+                
 
             </x-slot>
 

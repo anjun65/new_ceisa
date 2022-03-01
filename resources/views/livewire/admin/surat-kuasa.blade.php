@@ -30,8 +30,6 @@
                 </x-dropdown>
 
                 <livewire:import-transactions />
-
-                <x-button.primary wire:click="create"><x-icon.plus/> Baru</x-button.primary>
             </div>
         </div>
 
@@ -45,7 +43,7 @@
                             <option value="" disabled>Select Status...</option>
 
                             @foreach (App\Models\Kuasa::STATUSES as $value => $label)
-                            <option value="{{ $value }}">{{ $label }}</option>
+                                <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-input.select>
                     </x-input.group>
@@ -207,7 +205,7 @@
     <!-- Save Transaction Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Edit Surat Kuasa</x-slot>
+            <x-slot name="title">Surat Kuasa</x-slot>
                 
             <x-slot name="content">
                 <h3 class="text-xl font-medium text-gray-900 dark:text-white">
@@ -215,23 +213,23 @@
                 </h3>
 
                 <x-input.group for="npwp_pemberi" label="NPWP Perusahaan" :error="$errors->first('editing.npwp_pemberi')">
-                    <x-input.text wire:model="editing.npwp_pemberi" id="npwp_pemberi" placeholder="NPWP Perusahaan" />
+                    <x-input.text disabled wire:model="editing.npwp_pemberi" id="npwp_pemberi" placeholder="NPWP Perusahaan" />
                 </x-input.group>
 
                 <x-input.group for="pemberi_kuasa" label="Pemberi Kuasa" :borderless="true" :error="$errors->first('editing.pemberi_kuasa')">
-                    <x-input.text wire:model="editing.pemberi_kuasa" id="pemberi_kuasa" placeholder="Pemberi Kuasa" />
+                    <x-input.text disabled wire:model="editing.pemberi_kuasa" id="pemberi_kuasa" placeholder="Pemberi Kuasa" />
                 </x-input.group>
 
                 <x-input.group for="alamat_perusahaan" label="Alamat Perusahaan" :borderless="true" :error="$errors->first('editing.alamat_perusahaan')">
-                    <x-input.text wire:model="editing.alamat_perusahaan" id="alamat_perusahaan" placeholder="Alamat Perusahaan" />
+                    <x-input.text disabled wire:model="editing.alamat_perusahaan" id="alamat_perusahaan" placeholder="Alamat Perusahaan" />
                 </x-input.group>
 
                 <x-input.group for="nomor_ijin_bpk" label="Nomor Ijin BPK" :borderless="true" :error="$errors->first('editing.nomor_ijin_bpk')">
-                    <x-input.text wire:model="editing.nomor_ijin_bpk" id="nomor_ijin_bpk" placeholder="Nomor Ijin BPK"/>
+                    <x-input.text disabled wire:model="editing.nomor_ijin_bpk" id="nomor_ijin_bpk" placeholder="Nomor Ijin BPK"/>
                 </x-input.group>
 
                 <x-input.group for="tanggal_ijin_bpk" label="Tanggal Ijin BPK" :borderless="true" :error="$errors->first('editing.tanggal_ijin_bpk')">
-                    <x-input.date wire:model="editing.tanggal_ijin_bpk" id="tanggal_ijin_bpk" />
+                    <x-input.date disabled wire:model="editing.tanggal_ijin_bpk" id="tanggal_ijin_bpk" />
                 </x-input.group>
 
 
@@ -240,19 +238,19 @@
                 </h3>
 
                 <x-input.group for="npwp_penerima" label="NPWP PPJK" :error="$errors->first('editing.npwp_penerima')">
-                    <x-input.text wire:model="editing.npwp_penerima" id="npwp_penerima" placeholder="NPWP PPJK" />
+                    <x-input.text disabled wire:model="editing.npwp_penerima" id="npwp_penerima" placeholder="NPWP PPJK" />
                 </x-input.group>
 
                 <x-input.group for="penerima_kuasa" label="Penerima Kuasa" :borderless="true" :error="$errors->first('editing.penerima_kuasa')">
-                    <x-input.text wire:model="editing.penerima_kuasa" id="title" placeholder="Penerima Kuasa" />
+                    <x-input.text disabled wire:model="editing.penerima_kuasa" id="title" placeholder="Penerima Kuasa" />
                 </x-input.group>
 
                 <x-input.group for="alamat_perusahaan_penerima" label="Alamat Perusahaan" :borderless="true" :error="$errors->first('editing.alamat_perusahaan_penerima')">
-                    <x-input.text wire:model="editing.alamat_perusahaan_penerima" id="alamat_perusahaan_penerima" placeholder="Alamat Perusahaan" />
+                    <x-input.text disabled wire:model="editing.alamat_perusahaan_penerima" id="alamat_perusahaan_penerima" placeholder="Alamat Perusahaan" />
                 </x-input.group>
 
                 <x-input.group for="kantor_bc_ftz" label="Kantor BC FTZ" :error="$errors->first('editing.kantor_bc_ftz')">
-                    <x-input.select wire:model="editing.kantor_bc_ftz" id="kantor_bc_ftz">
+                    <x-input.select disabled wire:model="editing.kantor_bc_ftz" id="kantor_bc_ftz">
                             <option value="" disabled selected>Pilih Kantor BC</option>
                             <option value="DIREKTORAT IKC">DIREKTORAT IKC</option>
                             <option value="KPPBC TMP B TANJUNG BALAI KARIMUN">KPPBC TMP B TANJUNG BALAI KARIMUN</option>
@@ -263,7 +261,7 @@
                 </x-input.group>
 
                 <x-input.group for="ppftz_dikuasakan" label="PPFTZ Dikuasakan" :error="$errors->first('editing.ppftz_dikuasakan')">
-                    <x-input.select wire:model="editing.ppftz_dikuasakan" id="ppftz_dikuasakan">
+                    <x-input.select disabled wire:model="editing.ppftz_dikuasakan" id="ppftz_dikuasakan">
                             <option value="" disabled selected>Pilih Kantor BC</option>
                             <option value="PPFTZ01 - Pemasukan dari Luar Daerah (Impor)">PPFTZ01 - Pemasukan dari Luar Daerah (Impor)</option>
                             <option value="PPFTZ01 - Pemasukan dari Luar Daerah (Ekspor)">PPFTZ01 - Pemasukan dari Luar Daerah (Ekspor)</option>
@@ -280,27 +278,25 @@
                 </h3>
 
                 <x-input.group for="nomor_kuasa" label="Nomor Surat Kuasa" :error="$errors->first('editing.nomor_kuasa')">
-                    <x-input.text wire:model="editing.nomor_kuasa" id="title" placeholder="Nomor Surat Kuasa" />
+                    <x-input.text disabled wire:model="editing.nomor_kuasa" id="title" placeholder="Nomor Surat Kuasa" />
                 </x-input.group>
                 
                 <x-input.group for="tanggal_kuasa" label="Tanggal Surat Kuasa" :borderless="true" :error="$errors->first('editing.tanggal_kuasa')">
-                    <x-input.date wire:model="editing.tanggal_kuasa" id="tanggal_kuasa" />
+                    <x-input.date disabled wire:model="editing.tanggal_kuasa" id="tanggal_kuasa" />
                 </x-input.group>
 
                 <x-input.group label="Photo" for="photo" :error="$errors->first('upload')">
-                <x-input.file-upload wire:model="upload" id="photo">
-                    @if ($upload)
-                        {{ $upload->getClientOriginalName()}}
-                    @endif
-                </x-input.file-upload>
-            </x-input.group>
+                    <x-button.secondary wire:click="download_surat({{ $kuasa->id }})">
+                        Download File
+                    </x-button.secondary>
+                </x-input.group>
 
                 <x-input.group for="awal_berlaku" label="Awal Berlaku" :borderless="true" :error="$errors->first('editing.awal_berlaku')">
-                    <x-input.date wire:model="editing.awal_berlaku" id="awal_berlaku" />
+                    <x-input.date disabled wire:model="editing.awal_berlaku" id="awal_berlaku" />
                 </x-input.group>
 
                 <x-input.group for="akhir_berlaku" label="Akhir Berlaku" :borderless="true" :error="$errors->first('editing.akhir_berlaku')">
-                    <x-input.date wire:model="editing.akhir_berlaku" id="akhir_berlaku" />
+                    <x-input.date disabled wire:model="editing.akhir_berlaku" id="akhir_berlaku" />
                 </x-input.group>
 
             </x-slot>
@@ -308,7 +304,7 @@
             <x-slot name="footer">
                 <x-button.secondary wire:click="$set('showEditModal', false)">Cancel</x-button.secondary>
 
-                <x-button.primary type="submit">Save</x-button.primary>
+                <x-button.primary type="submit">Approve</x-button.primary>
             </x-slot>
         </x-modal.dialog>
     </form>

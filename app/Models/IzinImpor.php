@@ -21,8 +21,17 @@ class IzinImpor extends Model
         'awal_berlaku',
         'akhir_berlaku',
         'status',
+
+        'npwp_perusahaan',
+        'tanggal_izin',
+        'nomor_surat',
+        'tanggal_surat',
+        'kantor_bc_ftz',
+        'upload_dokumen',
     ];
 
+
+    
 
     const STATUSES = [
         'Diterima' => 'Diterima',

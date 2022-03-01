@@ -27,6 +27,13 @@ class Kuasa extends Model
         'penerima_kuasa',
         'awal_berlaku',
         'akhir_berlaku',
+        'npwp_pemberi',
+        'alamat_perusahaan',
+        'npwp_penerima',
+        'alamat_perusahaan_penerima',
+        'kantor_bc_ftz',
+        'ppftz_dikuasakan',
+        'upload_dokumen',
         'status',
     ];
 

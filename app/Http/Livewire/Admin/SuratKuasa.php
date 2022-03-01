@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Kuasa;
@@ -58,6 +58,11 @@ class SuratKuasa extends Component
     public function mount() { $this->editing = $this->makeBlankTransaction(); }
     public function updatedFilters() { $this->resetPage(); }
 
+    public function download_surat($id) 
+    {
+        return response()->download(storage_path('app/surat_kuasa/DbwJcZr94zZUNwcztaXaz4Y7iKqoU3TttzrDfOF8.jpg'));
+    }
+
     public function exportSelected()
     {
         return response()->streamDownload(function () {
@@ -108,16 +113,8 @@ class SuratKuasa extends Component
 
     public function save()
     {
-        $this->validate();
-
         $this->editing->fill([
-            'user_id' => Auth::id(),
-            'status' => 'Diajukan',
-            'upload_dokumen' => $this->upload->store('surat_kuasa'),
-        ]);
-    
-        $this->upload ([
-            
+            'status' => 'Disetujui',
         ]);
 
         $this->emitSelf('notify-saved');
@@ -151,7 +148,7 @@ class SuratKuasa extends Component
 
     public function render()
     {
-        return view('livewire.surat-kuasa', [
+        return view('livewire.admin.surat-kuasa', [
             'kuasas' => $this->rows,
         ]);
     }
